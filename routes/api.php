@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\LibrosController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -13,7 +14,14 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['middleware' => 'cors'], function () {
+        Route::apiResource('libros', LibrosController::class);
+        
 });
+
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//         Route::apiResource('libros', LibroController::class);
+
+//     return $request->user();
+// });
+// 
